@@ -39,9 +39,11 @@ sudo service postgresql restart
 
 7. Creer la base de donnee
 
-Suivre les instructions suivant: ![info](documents/How to create demonstration tables.docx)
+Suivre les instructions suivant: file://documents/How to create demonstration tables.docx
+
 
 ## Creation de la base de donnée
+
 
 1. Telecharger le dataset de https://www.transtats.bts.gov/tables.asp?DB_ID=120.
 
@@ -69,3 +71,35 @@ postgres=# CREATE USER [nom user];
 postgres=# ALTER ROLE [nom user] WITH CREATEDB;
 ```
 
+* Creation d'une base de donnee
+
+```cmd
+postgres=# CREATE DATABASE [nom base de donnee] OWNER [nom user];
+```
+
+
+* Attribuer un mot de passe
+
+```cmd
+postgres=# ALTER USER [nom user] WITH ENCRYPTED PASSWORD 'mon_mot_de_passe';
+```
+
+* Test
+
+```cmd
+postgres=# \q
+postgres@linuxlite:~$ psql nom_base_de_donnee
+```
+
+* Infos connexion
+
+```cmd
+postgres=# \q
+postgres@linuxlite:~$ psql nom_base_de_donnee
+```
+
+* Fichier de configuration
+
+```cmd
+root/etc/postgresql/11/main/pg_hba.conf
+```
