@@ -146,6 +146,74 @@ WHERE origin_city_name LIKE 'New%LA';
 
 ![pg4Admin_perf](documents/pg4admin_tables_perf9.png)
 
+Exemple: Interroge notre table performance lorsque origin_city_name match avec '____,KS'.
+
+```sql
+SELECT DISTINCT	origin_city_name 
+	FROM performance
+WHERE origin_city_name LIKE '____, KS';
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf10.png)
+
+Exemple: Interroge notre table performance lorsque origin_city_name match avec '____,%'.
+
+```sql
+SELECT DISTINCT	origin_city_name 
+	FROM performance
+WHERE origin_city_name LIKE '____, %';
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf11.png)
+
+*A l'inverser nous pouvons utiliser la clause WHERE...NOT LIKE*
+
+
+#### IS NULL et IS NOT NULL
+
+Le contenu d'un champs retourne NULL lorsque:
+
+* celui-ci est abscent, sql reconnaît un champ vide comme une valeur nulle
+* lors d'un calcule faux (par exemple x/0)
+* l'utilisation d'un caractère d'espace vide est une mauvaise pratique
+
+Exemple: Interroge notre table performance lorsque cancellation_code IS NOT NULL.
+
+```sql
+SELECT	fl_date,
+		mkt_carrier AS airline,
+		mkt_carrier_fl_num AS flight,
+		cancellation_code
+	FROM performance
+WHERE cancellation_code IS NOT NULL;
+
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf12.png)
+
+Exemple: Interroge notre table performance lorsque cancellation_code IS NULL.
+
+```sql
+SELECT	fl_date,
+		mkt_carrier AS airline,
+		mkt_carrier_fl_num AS flight,
+		cancellation_code
+	FROM performance
+WHERE cancellation_code IS NULL;
+
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf13.png)
+
+
+
+
+
+
+
+
+
+
 
 ## TIPS Postgresql
 
