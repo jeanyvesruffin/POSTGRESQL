@@ -42,9 +42,109 @@ sudo service postgresql restart
 
 1. Suivre les instructions suivant: ![instruction](documents/instruction.docx)
 
-2. Visualiser vos tables dans pg4Admin
+
+![pg4Admin](documents/pg4admin_tables.png)
 
 
+## Visualiser le contenu de vos tables dans pg4Admin
+
+#### SELECT
+
+Exemple: Interroger tous le contenu de la table performance:
+
+```sql
+SELECT * FROM performance
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf.png)
+
+
+Exemple: Interroger le contenu des colonnes mkt_carrier, mkt_carrier_fl_num, origine  de la table performance:
+
+```sql
+SELECT mkt_carrier, mkt_carrier_fl_num, origin FROM performance
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf2.png)
+
+Exemple: Interroger le contenu des colonnes mkt_carrier, mkt_carrier_fl_num, origin renomme de la table performance: 
+
+```sql
+SELECT mkt_carrier AS airline, mkt_carrier_fl_num AS flight, origin AS depart_city FROM performance
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf3.png)
+
+#### SELECT DISTINCT
+
+Exemple: Interroger le contenu de la colonne mkt_carrier de la table performance en retirant les doublons
+
+```sql
+SELECT DISTINCT mkt_carrier FROM performance
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf4.png)
+
+
+Exemple: Interroger le contenu de la colonne mkt_carrier  et de la colonne origin renomme de la table performance en retirant les doublons
+
+```sql
+SELECT DISTINCT mkt_carrier, origin AS depart_city FROM performance
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf5.png)
+
+## Limiter le nombre de resultat
+
+#### Clause WHERE
+
+Exemple: Interroger le contenu de la colonne mkt_carrier  et de la colonne origin renomme de la table performance en retirant les doublons lorsque mkt_carrier='UA'
+
+```sql
+SELECT DISTINCT mkt_carrier, origin AS depart_city FROM performance WHERE mkt_carrier='UA'
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf6.png)
+
+
+#### Clause WHERE avec operateur de comparaison (et, ou, >, <, =, <>,>= et <=)
+
+Exemple: Interroger le contenu de la colonne mkt_carrier  et de la colonne origin renomme de la table performance lorsque mkt_carrier='UA' et depart_city='BZN'
+
+```sql
+SELECT mkt_carrier, origin AS depart_city FROM performance WHERE mkt_carrier='UA' AND origin='BZN'
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf7.png)
+
+#### Matching patterns (LIKE)
+
+Le pattern peut prendre un caratere generique avec %.
+
+Oubien nous cherchons le terme exact avec _.
+
+Exemple: Interroge notre table performance lorsque origin_city_name match avec 'Fort%' (plus qqchose).
+
+```sql
+SELECT 	fl_date,
+		mkt_carrier AS airline,
+		mkt_carrier_fl_num AS flight,
+		origin_city_name 
+	FROM performance
+WHERE origin_city_name LIKE 'Fort%';
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf8.png)
+
+Exemple: Interroge notre table performance lorsque origin_city_name match avec 'New%LA' en retirant les doublons.
+
+```sql
+SELECT DISTINCT	origin_city_name 
+	FROM performance
+WHERE origin_city_name LIKE 'New%LA';
+```
+
+![pg4Admin_perf](documents/pg4admin_tables_perf9.png)
 
 
 ## TIPS Postgresql
