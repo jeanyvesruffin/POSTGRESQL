@@ -39,7 +39,7 @@ sudo service postgresql restart
 
 7. Creer la base de donnee
 
-Suivre les instructions suivant: [instruction](documents/How to create demonstration tables.docx)
+Suivre les instructions suivant: ![instruction](documents/instruction.docx)
 
 
 ## Creation de la base de donnée
