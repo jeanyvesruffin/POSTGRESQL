@@ -42,7 +42,7 @@ sudo service postgresql restart
 Suivre les instructions suivant: file://documents/How to create demonstration tables.docx
 
 
-## Creation de la base de donnée
+## Creation de la base de donnée
 
 
 1. Telecharger le dataset de https://www.transtats.bts.gov/tables.asp?DB_ID=120.
@@ -50,8 +50,7 @@ Suivre les instructions suivant: file://documents/How to create demonstration ta
 2. 
 
 
-
-## TIPS Postgresql
+## TIPS Postgresql
 
 * Liste des user
 
