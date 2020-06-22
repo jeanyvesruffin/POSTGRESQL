@@ -37,68 +37,73 @@ sudo service postgresql restart
 6. Suivre les recommandation §3.7 https://doc.ubuntu-fr.org/postgresql
 
 
-7. Creer la base de donnee
-
-Suivre les instructions suivant: ![instruction](documents/instruction.docx)
-
-
 ## Creation de la base de donnée
 
 
-1. Telecharger le dataset de https://www.transtats.bts.gov/tables.asp?DB_ID=120.
+1. Suivre les instructions suivant: ![instruction](documents/instruction.docx)
 
-2. 
+2. Visualiser vos tables dans pg4Admin
+
+
 
 
 ## TIPS Postgresql
 
-* Liste des user
+1. Liste des user
 
 ```cmd
 postgres=# \du
 ```
 
-* Creation d'un user
+2. Creation d'un user
 
-```cmd
+```sql
 postgres=# CREATE USER [nom user];
 ```
 
-* Donner les droits a l'user
+3. Donner les droits a l'user
 
-```cmd
+```sql
 postgres=# ALTER ROLE [nom user] WITH CREATEDB;
 ```
 
-* Creation d'une base de donnee
+4. Creation d'une base de donnee
 
-```cmd
+```sql
 postgres=# CREATE DATABASE [nom base de donnee] OWNER [nom user];
 ```
 
 
-* Attribuer un mot de passe
+5. Attribuer un mot de passe
 
-```cmd
+```sql
 postgres=# ALTER USER [nom user] WITH ENCRYPTED PASSWORD 'mon_mot_de_passe';
 ```
 
-* Test
+6. Test
 
 ```cmd
 postgres=# \q
 postgres@linuxlite:~$ psql nom_base_de_donnee
 ```
 
-* Infos connexion
+7. Infos connexion
 
 ```cmd
 postgres=# \q
 postgres@linuxlite:~$ psql nom_base_de_donnee
 ```
 
-* Fichier de configuration
+8. Fichier de configuration
 
 ```cmd
 root/etc/postgresql/11/main/pg_hba.conf
+```
+
+9. Connaitre et changer le Datestyle de la base de donnée
+
+```sql
+show datestyle ;
+....
+ALTER DATABASE [nom de base de donnee] SET Datestyle=iso, mdy;
 ```
