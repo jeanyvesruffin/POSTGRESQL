@@ -1,5 +1,9 @@
 # POSTGRESQL
 
+Sommaire:
+
+<!-- TOC -->autoauto- [POSTGRESQL](#postgresql)auto    - [Installation prealable](#installation-prealable)auto    - [Creation de la base de donnée](#creation-de-la-base-de-donnée)auto    - [Visualiser le contenu de vos tables dans pg4Admin](#visualiser-le-contenu-de-vos-tables-dans-pg4admin)auto            - [SELECT](#select)auto            - [SELECT DISTINCT](#select-distinct)auto    - [Limiter le nombre de resultat](#limiter-le-nombre-de-resultat)auto            - [Clause WHERE](#clause-where)auto            - [Clause WHERE avec operateur de comparaison (et, ou, >, <, =, <>,>= et <=)](#clause-where-avec-operateur-de-comparaison-et-ou-----et-)auto            - [Matching patterns (LIKE)](#matching-patterns-like)auto            - [IS NULL et IS NOT NULL](#is-null-et-is-not-null)auto            - [Combinaisons (BETWEEN et IN)](#combinaisons-between-et-in)auto            - [Ordre dde priorite des operations](#ordre-dde-priorite-des-operations)auto    - [Utilisation de JOIN](#utilisation-de-join)auto            - [Data Key](#data-key)auto            - [INNER JOIN](#inner-join)auto            - [Utilisation d'alias](#utilisation-dalias)auto            - [OUTER JOIN](#outer-join)auto            - [FULL JOIN](#full-join)auto            - [Rechercher dans les tables (LOOKUP)](#rechercher-dans-les-tables-lookup)auto    - [Presenter et agreger vos résultats](#presenter-et-agreger-vos-résultats)auto            - [Trier les resultats](#trier-les-resultats)auto            - [Application de calculs agreges](#application-de-calculs-agreges)auto            - [Filtration de resultat agreges](#filtration-de-resultat-agreges)auto    - [TIPS Postgresql](#tips-postgresql)autoauto<!-- /TOC -->
+
 ## Installation prealable
 
 1. https://www.postgresql.org/download/linux/ubuntu/
@@ -427,6 +431,94 @@ Recap diagram de Venn:
 ![pg4Admin_perf](documents/pg4admin_tables_perf30.png)
 
 https://en.wikipedia.org/wiki/Venn_diagram
+
+
+## Presenter et agreger vos résultats
+
+#### Trier les resultats
+
+![pg4Admin_perf](documents/pg4admin_tables_perf31.png)
+
+
+Exemple *ORDER BY*:
+
+```sql
+SELECT 	name,
+		state
+	FROM residency
+	ORDER BY state, name;
+```
+
+Resultat:
+
+![pg4Admin_perf](documents/pg4admin_tables_perf32.png)
+
+Exemple *ORDER BY [field] DESC, [other_field] ASC*:
+
+```sql
+SELECT 	name,
+		state
+	FROM residency
+	ORDER BY state DESC, name ASC;
+```
+
+Resultat:
+
+![pg4Admin_perf](documents/pg4admin_tables_perf33.png)
+
+Exemple sort *ORDER BY [num_colomn] DESC, [other_num_colomn] ASC*
+
+```sql
+SELECT 	name,
+		state
+	FROM residency
+	ORDER BY 2 DESC, 1 ASC;
+```
+
+Resultat identique que precedemment.
+
+
+#### Application de calculs agreges
+
+* COUNT
+* SUM
+* AVG
+* MIN
+* MAX
+
+![pg4Admin_perf](documents/pg4admin_tables_perf34.png)
+![pg4Admin_perf](documents/pg4admin_tables_perf35.png)
+![pg4Admin_perf](documents/pg4admin_tables_perf36.png)
+![pg4Admin_perf](documents/pg4admin_tables_perf37.png)
+![pg4Admin_perf](documents/pg4admin_tables_perf38.png)
+![pg4Admin_perf](documents/pg4admin_tables_perf39.png)
+![pg4Admin_perf](documents/pg4admin_tables_perf40.png)
+
+
+#### Filtration de resultat agreges
+
+* WHERE ==> Filtre simple ligne
+* HAVING ==> Filtre de resultats agreges
+
+![pg4Admin_perf](documents/pg4admin_tables_perf41.png)
+![pg4Admin_perf](documents/pg4admin_tables_perf42.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## TIPS Postgresql
